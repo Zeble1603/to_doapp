@@ -2,6 +2,21 @@ body{
     font-family: 'Source Code Pro', monospace;
 }
 
-#logo{
-    color: yellow;
+
+.hero.login-background{
+    background: linear-gradient(-45deg,#3fc1c0,#20bac5,#00b2ca,#04a6c2,#0899ba,#0f80aa,#16679a,#1a5b92,#1c558e,#1d4e89);
+    background-size: 500% 500%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
 }

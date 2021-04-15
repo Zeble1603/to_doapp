@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'accounts/base_accounts.html' %}
 {% load bulma_tags %}
 
-{% block body_block %}
+{% block accounts_block %}
 <h1>Sign Up</h1>
 <form method="post">
     {% csrf_token %}
@@ -13,4 +13,4 @@
 
 </form>
 
-{% endblock body_block %}
+{% endblock accounts_block %}

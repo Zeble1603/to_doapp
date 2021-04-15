@@ -1,18 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'accounts/base_accounts.html' %}
 {% load bulma_tags %}
-
-{% block body_block %}
-<h1>Log in</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form|bulma}}
-    <div class="field">
-        <button type="submit" class="button is-primary">Login</button>
-    </div>
-    <input type="hidden" name="next" value="{{ next }}"/>
-</form>
-<a href= "{% url 'accounts:signup' %}" class="button is-primary">Sign Up</a>
-
-
-
-{% endblock body_block %}
+{% block accounts_block %}
+    <h1>Log in</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|bulma}}
+        <div class="field">
+            <button type="submit" class="button is-primary">Login</button>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+    <a href= "{% url 'accounts:signup' %}" class="button is-primary">Sign Up</a>
+{% endblock accounts_block %}
+                                
