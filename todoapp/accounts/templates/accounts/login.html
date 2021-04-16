@@ -1,6 +1,7 @@
 {% extends 'accounts/base_accounts.html' %}
 {% load bulma_tags %}
-{% block accounts_block %}
+{% block accounts_block %}  
+    <div class= 'box'>
     <h1>Log in</h1>
     <form action="" method="post">
         {% csrf_token %}
@@ -10,6 +11,7 @@
         </div>
         <input type="hidden" name="next" value="{{ next }}"/>
     </form>
+    </div>
     <a href= "{% url 'accounts:signup' %}" class="button is-primary">Sign Up</a>
 {% endblock accounts_block %}
                                 

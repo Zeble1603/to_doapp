@@ -1,6 +1,5 @@
 from django import forms
 from .models import Task
-from django.contrib.auth import get_user_model
 
 class TaskForm(forms.ModelForm):
     

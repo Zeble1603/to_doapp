@@ -2,15 +2,17 @@
 {% load bulma_tags %}
 
 {% block accounts_block %}
+<div class='box'>
 <h1>Sign Up</h1>
 <form method="post">
     {% csrf_token %}
     {{form|bulma}}
     <div class="field">
-        <button type="submit" class="button is-primary">Sign Up</button>
+        <button type="submit" class="button is-primary">Submit</button>
     </div>
     <input type="hidden" name="next" value="{{ next }}"/>
 
 </form>
-
+</div>
+<a href= "{% url 'accounts:login' %}" class="button is-primary">Login</a>
 {% endblock accounts_block %}
