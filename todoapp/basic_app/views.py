@@ -14,7 +14,6 @@ class TaskListView(ListView):
     def get_queryset(self):
         return Task.objects.filter(created_date__lte=timezone.now()).order_by("-due_date")
 
-
 class TaskCreateView(CreateView):
     model = Task
     template_name = "task_form.html"
