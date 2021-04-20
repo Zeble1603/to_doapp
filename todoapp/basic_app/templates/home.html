@@ -5,6 +5,7 @@
         <div class="content main-content">
             <div class="hero login-background is-success is-fullheight">
                 <div class="hero-body">
+                    {% block content_block %}
                     {% for task in task_list %}
                     <div class="container is-fluid has-text-centered columns is-mobile is-centered">
                         <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop is-4-widescreen">
@@ -20,6 +21,7 @@
                         </div>
                     </div>
                     {% endfor %}
+                    {% endblock content_block %}
                 </div>
             </div>
         </div>
