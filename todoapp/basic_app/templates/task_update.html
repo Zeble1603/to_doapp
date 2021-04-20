@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% load bulma_tags %}
+{% block content_block %}
+
+<div class="container is-fluid has-text-centered columns is-mobile is-centered">
+    <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop is-4-widescreen">
+        <div class='box'>
+            <h1>Update your task</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{form|bulma}}
+                <div class="field">
+                    <button type="submit" class="button is-primary">Create</button>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}"/>
+
+            </form>
+        </div>
+        <a href= "{% url 'basic_app:home' %}" class="button is-primary">Home</a>
+    </div>
+</div>        
+{% endblock content_block %}

@@ -29,8 +29,11 @@ class TaskDeleteView(DeleteView):
 class TaskUpdateView(UpdateView):
     model = Task
     login_url = "/login/"
+    template_name = "task_update.html"
     redirect_field_name = 'basic_app/home.html'
+    success_url = reverse_lazy('basic_app:home')
     form_class = TaskForm
+
 
     
 
