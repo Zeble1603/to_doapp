@@ -5,13 +5,21 @@
         <div class="content main-content">
             <div class="hero login-background is-success is-fullheight">
                 <div class="hero-body">
+                    {% for task in task_list %}
                     <div class="container is-fluid has-text-centered columns is-mobile is-centered">
                         <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop is-4-widescreen">
-                        {% block content_block %}
-                        
-                        {% endblock content_block %}
+                            <div class='box'>
+                                <h2>{{task.name}}</h2>
+                                <p class="due_date">Due date : {{task.due_date}}</p>
+                                <p class ='created_date'>Create on {{task.create_date}}</p>
+                                <div class="field">
+                                    <a class= 'button is-primary' href = "{% url 'basic_app:update' pk=task.pk %}">Update</a>
+                                    <a class= 'button is-danger' href = "{% url 'basic_app:delete' pk=task.pk %}">Delete</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
