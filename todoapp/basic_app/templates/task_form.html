@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+{% load bulma_tags %}
+{% block content_block %}
+
+<div class='box'>
+<h1>Create a new task</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form|bulma}}
+    <div class="field">
+        <button type="submit" class="button is-primary">Create</button>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}"/>
+
+</form>
+</div>
+<a href= "{% url 'basic_app:home' %}" class="button is-primary">Home</a>
+
+{% endblock content_block %}
+
+

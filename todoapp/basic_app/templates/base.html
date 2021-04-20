@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar main" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="{% url 'basic_app:home' %}">
             <img id='logo' src="{% static 'toobee/toobee.png' %}" width="30" height="100%">
             <p class="subtitle is-3">TooBee</p>
         </a>
@@ -32,8 +32,8 @@
             Home
         </a>
 
-        <a class="navbar-item">
-            Documentation
+        <a class="navbar-item" href="{% url 'basic_app:create' %}">
+            New Task
         </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
