@@ -19,11 +19,12 @@ class TaskCreateView(CreateView):
     template_name = "task_form.html"
     form_class = TaskForm
     redirect_field_name = 'basic_app/home.html'
+    success_url = reverse_lazy('basic_app:home')
 
 class TaskDeleteView(DeleteView):
     model = Task
     template_name = "task_delete.html"
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('basic_app:home')
     
 class TaskUpdateView(UpdateView):
     model = Task
