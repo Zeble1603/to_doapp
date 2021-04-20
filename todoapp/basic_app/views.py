@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.views.generic import TemplateView, CreateView, DeleteView,ListView
 from .models import Task
 from .forms import TaskForm
+from django.urls import reverse_lazy
 # Create your views
 
 
@@ -19,6 +20,20 @@ class TaskCreateView(CreateView):
     template_name = "task_form.html"
     form_class = TaskForm
     redirect_field_name = 'basic_app/home.html'
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    template_name = ".html"
+    success_url = reverse_lazy('home')
+    
+class TaskUpdateView(UpdateView):
+    model = Task
+    login_url = "/login/"
+    redirect_field_name = 'basic_app/home.html'
+    form_class = TaskForm
+
+    
+
     
 
 
