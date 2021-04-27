@@ -10,13 +10,13 @@
                 {% csrf_token %}
                 {{form|bulma}}
                 <div class="field">
-                    <button type="submit" class="button is-primary">Create</button>
+                    <button type="submit" class="button is-primary is-medium is-fullwidth">Update</button>
                 </div>
                 <input type="hidden" name="next" value="{{ next }}"/>
 
             </form>
         </div>
-        <a href= "{% url 'basic_app:home' %}" class="button is-primary">Home</a>
+        <a href= "{% url 'basic_app:home' %}" class="button is-info is-medium is-fullwidth">Home</a>
     </div>
 </div>        
 {% endblock content_block %}

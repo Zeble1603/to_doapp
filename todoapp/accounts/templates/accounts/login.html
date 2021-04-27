@@ -7,11 +7,11 @@
         {% csrf_token %}
         {{form|bulma}}
         <div class="field">
-            <button type="submit" class="button is-primary">Login</button>
+            <button type="submit" class="button is-primary is-medium is-fullwidth">Login</button>
         </div>
         <input type="hidden" name="next" value="{{ next }}"/>
     </form>
     </div>
-    <a href= "{% url 'accounts:signup' %}" class="button is-primary">Sign Up</a>
+    <a href= "{% url 'accounts:signup' %}" class="button is-medium is-fullwidth">Sign Up</a>
 {% endblock accounts_block %}
                                 
