@@ -124,4 +124,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = "index/"
-LOGOUT_REDIRECT_URL = 'thanks'
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = "/"

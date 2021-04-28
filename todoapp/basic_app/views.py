@@ -4,29 +4,31 @@ from django.views.generic import TemplateView, CreateView, DeleteView,ListView,U
 from .models import Task
 from .forms import TaskForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views
 
 
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin,ListView):
     model = Task
     template_name = "home.html"
     
     def get_queryset(self):
         return Task.objects.filter(created_date__lte=timezone.now()).order_by("-due_date")
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin,CreateView):
     model = Task
     template_name = "task_form.html"
     form_class = TaskForm
     redirect_field_name = 'basic_app/home.html'
     success_url = reverse_lazy('basic_app:home')
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin,DeleteView):
     model = Task
     template_name = "task_delete.html"
     success_url = reverse_lazy('basic_app:home')
     
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(LoginRequiredMixin,UpdateView):
     model = Task
     login_url = "/login/"
     template_name = "task_update.html"
