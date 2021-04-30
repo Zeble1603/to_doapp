@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import SelectRelatedMixin
 from django.contrib.auth import get_user_model
+from django.http import Http404
 
 # Create your views
 User = get_user_model()
@@ -14,7 +15,6 @@ User = get_user_model()
 class TaskListView(LoginRequiredMixin,ListView,SelectRelatedMixin):
     model = Task
     template_name = "home.html"
-    select_related = ('user','task')
     
     def get_queryset(self):
         return Task.objects.filter(created_date__lte=timezone.now()).order_by("due_date")
@@ -25,13 +25,18 @@ class TaskCreateView(LoginRequiredMixin,CreateView,SelectRelatedMixin):
     form_class = TaskForm
     redirect_field_name = 'basic_app/home.html'
     success_url = reverse_lazy('basic_app:home')
-    select_related = ('user','task')
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.author = self.request.user
+        instance.save()
+        return super(TaskCreateView, self).form_valid(form)
+
 
 class TaskDeleteView(LoginRequiredMixin,DeleteView,SelectRelatedMixin):
     model = Task
     template_name = "task_delete.html"
     success_url = reverse_lazy('basic_app:home')
-    select_related = ('user','task')
     
 class TaskUpdateView(LoginRequiredMixin,UpdateView,SelectRelatedMixin):
     model = Task
@@ -40,7 +45,6 @@ class TaskUpdateView(LoginRequiredMixin,UpdateView,SelectRelatedMixin):
     redirect_field_name = 'basic_app/home.html'
     success_url = reverse_lazy('basic_app:home')
     form_class = TaskForm
-    select_related = ('user','task')
 
     
 
