@@ -8,7 +8,9 @@
     <section>
         <div class="content main-content">
             {% block content_block %}
+            {% if user.is_authenticated %}
             {% for task in task_list %}
+                {% if task.author == user %}
                 <div class="column is-half is-offset-one-quarter">
                     <div class="box">
                         <div class="block">
@@ -22,7 +24,9 @@
                         </div>     
                     </div>        
                 </div>    
+                {% endif %}
             {% endfor %}
+            {% endif %}
             {% endblock content_block %}
         </div>
     </section>
