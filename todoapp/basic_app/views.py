@@ -21,8 +21,8 @@ class TaskListView(LoginRequiredMixin,ListView,SelectRelatedMixin):
 
 class TaskCreateView(LoginRequiredMixin,CreateView,SelectRelatedMixin):
     model = Task
-    template_name = "task_form.html"
     form_class = TaskForm
+    template_name = "task_form.html"
     redirect_field_name = 'basic_app/home.html'
     success_url = reverse_lazy('basic_app:home')
 
