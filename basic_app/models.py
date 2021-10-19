@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Task(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150,blank=False)
     due_date = models.DateTimeField(default=timezone.now)
     created_date = models.DateTimeField(default=timezone.now)
